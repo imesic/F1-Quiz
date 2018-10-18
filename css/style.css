@@ -1,0 +1,74 @@
+body {
+	font-family: arial;
+	font-size: 15px;
+	line-height: 1.6em;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+label {
+	display: inline-block;
+	width: 180px;
+}
+
+input[type='text'] {
+	padding: 4px;
+	width: 95%;
+	border: 1px lightgray solid;
+	border-radius: 5px;
+
+}
+
+input[type='number'] {
+	padding: 4px;
+	width: 8%;
+	border: 1px lightgray solid;
+	border-radius: 5px;
+}
+
+.container {
+	width: 60%;
+	margin:0 auto;
+	overflow: auto;
+}
+
+header {
+	border-bottom:3px lightgray solid;
+}
+
+footer {
+	border-top: 3px lightgray solid;
+	text-align: center;
+	padding-top: 5px;
+
+}
+
+main {
+	padding-bottom: 20px;
+}
+
+a.start-button {
+	background-color: #DEDDDD;
+	color: #626262;
+	display: inline-block;
+	border: 1px solid;
+	border-radius: 4px;
+	padding: 8px 13px;
+}
+
+.current-question {
+	background-color: #ECE9E9;
+	padding: 8px;
+}
+
+@media only screen and (max-width: 960px) {
+	.container {
+		width: 80%;
+	}
+}
