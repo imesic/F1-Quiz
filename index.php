@@ -1,6 +1,16 @@
 <?php
     include ( 'db_connection.php' );
 ?>
+<?php 
+//Total broj pitanja
+$query = 'SELECT * FROM questions';
+
+//Get rezultat
+$results = $dbc->query($query) or die ($dbc->error.__LINE__);
+$total = $results->num_rows;
+
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -19,6 +29,10 @@
     <main>
         <div class="container">
             <h2>Test Your F1 Knowledge</h2>
+            <p>This is a multiple choice quiz to your knowledge of F1</p>
+            <ul>
+                <li>Number of Questions:<?php echo $total; ?> </li>
+            </ul>
             <a href="questions.php?n=1" class="start-button">Start Quiz</a>
         </div>
     </main>

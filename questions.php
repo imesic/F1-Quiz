@@ -1,3 +1,30 @@
+<?php 
+    include ( 'db_connection.php' ); 
+?>
+<?php
+    //Postavljanje broja pitanja
+    $number = (int) $_GET['n'];
+
+    //Get pitanje
+    $query = "SELECT * FROM questions 
+            WHERE question_number = $number";
+
+    //Get rezultat
+    $result = $dbc->query($query) or die ($dbc->error.__LINE__);
+    $question = $result->fetch_assoc();
+
+
+
+    //Get izbor
+    $query = "SELECT * FROM choices 
+            WHERE question_number = $number";
+
+    //Get rezultat
+    $choices = $dbc->query($query) or die ($dbc->error.__LINE__);
+    
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +42,14 @@
     <main>
         <div class="container">
            <div class="current-question">Question 1 of 5</div>
-           <p class="question">Which driver leads by winning titles ?</p>
+           <p class="question">
+               <?php echo $question['text']; ?>
+           </p>
            <form method="post" action="proces.php">
                 <ul class="choices">
-                    <li><input type="radio" name="choice" value="1">Ayrton Senna</li>
-                    <li><input type="radio" name="choice" value="1">Juan Manuel Fangio</li>
-                    <li><input type="radio" name="choice" value="1">Michael Schumacher</li>
-                    <li><input type="radio" name="choice" value="1">Lewis Hamilton</li>
-                    <li><input type="radio" name="choice" value="1">Jackie Stewart</li>
+                    <?php while ($row = $choices->fetch_assoc()) : ?>
+                        <li><input type="radio" name="choice" value="<?php echo $row['id']; ?>" /><?php echo $row['text']; ?></li>
+                    <?php endwhile; ?>
                 </ul>
                <input type="submit" value="Submit" />
            </form>
